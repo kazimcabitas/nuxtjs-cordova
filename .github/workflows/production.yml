@@ -17,9 +17,8 @@ jobs:
         with:
           node-version: '14.x'
       - run: |
-          sudo apt-get update -y
           sudo apt-get install unzip -y
-          sudo apt-get install libc6-dev-i386 lib32z1 openjdk-8-jdk -y
+          sudo apt-get install libc6-dev-i386 lib32z1 -y
           sudo apt-get install default-jdk -y
           sudo apt-get install openjdk-8-jre-headless -y
           sudo apt-get install npm -y
@@ -36,8 +35,7 @@ jobs:
           export PATH=$PATH:$ANDROID_HOME/tools/bin
           export PATH=$PATH:$ANDROID_HOME/platform-tools
           # Fixes sdkmanager error with java versions higher than java 8
-          export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
-          export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" > ~/.bash_profile
+          export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'" > ~/.bash_profile
           source ~/.bash_profile
           npm i -g yarn
           npm i -g cordova
