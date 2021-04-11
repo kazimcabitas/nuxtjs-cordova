@@ -29,7 +29,7 @@ jobs:
           mkdir $HOME/android-sdk
           mv cmdline-tools $HOME/android-sdk/tools
           $HOME/android-sdk/tools/bin/sdkmanager --sdk_root=$HOME/android-sdk/tools --update
-          yes | $HOME/android-sdk/tools/bin/sdkmanager --sdk_root=$HOME/android-sdk/tools "platforms;android-29" "build-tools;29.0.2" "extras;google;m2repository" "extras;android;m2repository" -y
+          yes | $HOME/android-sdk/tools/bin/sdkmanager --sdk_root=$HOME/android-sdk/tools "platforms;android-29" "build-tools;29.0.2" "extras;google;m2repository" "extras;android;m2repository"
           yes | $HOME/android-sdk/tools/bin/sdkmanager --sdk_root=$HOME/android-sdk/tools --licenses
           export ANDROID_HOME=$HOME/android-sdk
           echo "export ANDROID_HOME=$HOME/android-sdk
