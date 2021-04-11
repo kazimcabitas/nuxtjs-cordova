@@ -20,6 +20,8 @@ jobs:
         with:
           java-version: '8'
       - run: |
+          echo "export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions'" > ~/.bash_profile
+          source ~/.bash_profile
           sudo apt-get install npm -y
           wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
           unzip commandlinetools-linux-6858069_latest.zip
@@ -32,7 +34,6 @@ jobs:
           echo "export ANDROID_HOME=$HOME/android-sdk" >> ~/.bash_profile
           echo "export PATH=$PATH:$ANDROID_HOME/tools/bin" >> ~/.bash_profile
           echo "export PATH=$PATH:$ANDROID_HOME/platform-tools" >> ~/.bash_profile
-          echo "export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'" > ~/.bash_profile
           source ~/.bash_profile
           npm i -g cordova
           npm i
