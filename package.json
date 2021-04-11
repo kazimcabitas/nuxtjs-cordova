@@ -33,7 +33,7 @@
     "cordova:add:ios": "npm run cordova:loads && cd cordova && cordova platform add ios && cd ..",
     "cordova:run:android": "npm run cordova:loads && cd cordova && cordova run android && cd ..",
     "cordova:run:ios": "npm run cordova:loads && cd cordova && cordova run ios && cd ..",
-    "cordova:sign:android": "npm run cordova:loads && [ -f android.keystore ] && mv ./android.keystore ./android.keystore.bkp && keytool -genkey -dname \"CN=Cabitaş, OU=Cabitaş Yazılım, O=Cabitaş Yazılım, L=İstanbul, S=unkown, C=TR\" -keystore android.keystore -alias android -validity 10000 -keysize 2048 -storepass 123456 -keypass 123456",
+    "cordova:sign:android": "npm run cordova:loads",
     "cordova:release": "npm run cordova:loads && npm run cordova:sign:android && cd cordova && cordova build -release --buildConfig=../cordova-build.json && mv ./platforms/android/app/build/outputs/apk/release/app-release.apk ../android-release.apk && cd .. && echo \"\r\nAndroid release app: \"$PWD\"/android-release.apk\"",
     "cordova:loads2": "source ~/.bash_profile",
     "cordova:loads": "",
