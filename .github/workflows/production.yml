@@ -20,4 +20,4 @@ jobs:
           sudo apt-get install libc6-dev-i386 lib32z1 -y
           sudo apt-get install default-jdk -y
           sudo apt-get install openjdk-8-jre-headless -y
-          [ -f android.keystore ] && mv ./android.keystore ./android.keystore.bkp && keytool -genkey -dname "CN=Cabitaş, OU=Cabitaş Yazılım, O=Cabitaş Yazılım, L=İstanbul, S=unkown, C=TR" -keystore android.keystore -alias android -validity 10000 -keysize 2048 -storepass 123456 -keypass 123456
+          keytool -genkey -dname "CN=Cabitaş, OU=Cabitaş Yazılım, O=Cabitaş Yazılım, L=İstanbul, S=unkown, C=TR" -keystore android.keystore -alias android -validity 10000 -keysize 2048 -storepass 123456 -keypass 123456
