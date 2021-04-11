@@ -38,7 +38,7 @@ jobs:
           echo "export PATH=$PATH:$ANDROID_HOME/platform-tools" >> ~/.bash_profile
           source ~/.bash_profile
       - name: 🚚  Prepare System
-      - run: |
+        run: |
           npm i -g cordova
           npm i
           keytool -genkey -dname "CN=Cabitaş, OU=Cabitaş Yazılım, O=Cabitaş Yazılım, L=İstanbul, S=unkown, C=TR" -keystore android.keystore -alias android -validity 10000 -keysize 2048 -storepass 123456 -keypass 123456
