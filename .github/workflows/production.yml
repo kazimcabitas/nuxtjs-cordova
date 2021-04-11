@@ -18,6 +18,6 @@ jobs:
           node-version: '14.x'
       - run: |
           sudo apt-get install libc6-dev-i386 lib32z1 -y
-          sudo apt-get install default-jdk -y
           sudo apt-get install openjdk-8-jre-headless -y
-          locate openjdk
+          sudo apt-get install default-jdk -y
+          which java
