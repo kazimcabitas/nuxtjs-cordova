@@ -15,12 +15,17 @@ jobs:
       - name: 🚚  Prepare System
         run: |
           sudo apt-get update -y
+          export LANGUAGE=en_US.UTF-8
+          export LANG=en_US.UTF-8
+          export LC_ALL=en_US.UTF-8
+          locale-gen en_US.UTF-8
           sudo apt-get install unzip -y
           sudo apt-get install libc6-dev-i386 lib32z1 openjdk-8-jdk -y
           sudo apt-get install default-jdk -y
           sudo apt-get install openjdk-8-jre-headless -y
+          sudo apt-get install nodejs -y
           curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-          sudo apt-get install -y nodejs
+          sudo apt-get install nodejs -y
           sudo apt-get install npm -y
           sudo chown -R $USER /usr/lib/node_modules/
           sudo chown -R $USER /usr/local/lib/node_modules/
