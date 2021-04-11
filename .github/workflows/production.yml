@@ -39,8 +39,8 @@ jobs:
           npm i
           keytool -genkey -dname "CN=Cabitaş, OU=Cabitaş Yazılım, O=Cabitaş Yazılım, L=İstanbul, S=unkown, C=TR" -keystore android.keystore -alias android -validity 10000 -keysize 2048 -storepass 123456 -keypass 123456
           yarn cordova:release:full
-      - name: 🚚  Upload APK Repo
-      - uses: actions/checkout@v2
-        with:
-          name: apk-release
-          path: android-release.apk
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m 'generated apk' ./android-release.apk
+          git push
