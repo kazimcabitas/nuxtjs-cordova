@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-        run: |
+      - run: |
           sudo apt-get update -y
           sudo apt-get install unzip -y
           sudo apt-get install libc6-dev-i386 lib32z1 openjdk-8-jdk -y
