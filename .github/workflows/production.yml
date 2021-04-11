@@ -21,4 +21,4 @@ jobs:
           sudo apt-get install openjdk-8-jdk -y
           sudo apt install software-properties-common -y
           which java
-          javac -v
+          javac --version
