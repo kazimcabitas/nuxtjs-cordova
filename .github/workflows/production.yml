@@ -20,5 +20,6 @@ jobs:
           sudo apt install openjdk-8-jdk openjdk-8-jre -y
           which java
           java -version
-          echo "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> /etc/environment
+          sudo echo "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> /etc/environment
+          sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/bin/java
           java -version
