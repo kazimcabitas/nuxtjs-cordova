@@ -28,7 +28,8 @@ jobs:
           rm commandlinetools-linux-6858069_latest.zip
           mkdir $HOME/android-sdk
           mv cmdline-tools $HOME/android-sdk/tools
-          touch ~/.android/repositories.cfg
+          mkdir $HOME/.android
+          touch $HOME/.android/repositories.cfg
           $HOME/android-sdk/tools/bin/sdkmanager --sdk_root=$HOME/android-sdk/tools --update
           yes | sudo $HOME/android-sdk/tools/bin/sdkmanager --sdk_root=$HOME/android-sdk/tools "platforms;android-29"
           yes | sudo $HOME/android-sdk/tools/bin/sdkmanager --sdk_root=$HOME/android-sdk/tools --licenses
