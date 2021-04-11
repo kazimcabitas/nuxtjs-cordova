@@ -1,0 +1,54 @@
+name: Build Release App
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 🚚  Prepare System
+        run: |
+          sudo apt-get install unzip -y
+          sudo apt-get install libc6-dev-i386 lib32z1 openjdk-8-jdk openjdk-8-jre-headless -y
+          sudo apt-get install default-jdk -y
+          sudo apt-get install python-software-properties -y
+          curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+          sudo apt-get install npm -y
+          sudo chown -R $USER /usr/lib/node_modules/
+          sudo chown -R $USER /usr/local/lib/node_modules/
+          sudo chown -R $USER /usr/local/bin/
+          sudo chown -R $USER /usr/local/share/
+
+          cd /var/www
+          wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
+          unzip commandlinetools-linux-6858069_latest.zip
+          rm commandlinetools-linux-6858069_latest.zip
+          mkdir android-sdk
+          mv cmdline-tools android-sdk/tools
+
+          /var/www/android-sdk/tools/bin/sdkmanager --sdk_root=/var/www/android-sdk/tools --update
+          yes | /var/www/android-sdk/tools/bin/sdkmanager --sdk_root=/var/www/android-sdk/tools "platforms;android-29" "build-tools;29.0.2" "extras;google;m2repository" "extras;android;m2repository" -y
+          yes | /var/www/android-sdk/tools/bin/sdkmanager --sdk_root=/var/www/android-sdk/tools --licenses
+
+          echo "
+          export ANDROID_HOME=/var/www/android-sdk
+          export PATH=$PATH:$ANDROID_HOME/tools/bin
+          export PATH=$PATH:$ANDROID_HOME/platform-tools
+          # Fixes sdkmanager error with java versions higher than java 8
+          export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+          export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+          " > ~/.bash_profile
+          source ~/.bash_profile
+          npm i -g yarn
+          npm i -g cordova
+          npm i
+      - name: 🎉  Build Release
+        run: |
+          yarn cordova:release:full --scripts-prepend-node-path

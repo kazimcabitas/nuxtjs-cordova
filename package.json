@@ -1,0 +1,63 @@
+{
+  "name": "cordova-nuxt-demo",
+  "app": {
+    "name": "Cordova Test App",
+    "description": "App description"
+  },
+  "author": {
+    "email": "developer@cabitas.com",
+    "url": "https://cabitas.com",
+    "name": "Cabitaş Yazılım"
+  },
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint": "yarn lint:js",
+    "cordova:build": "npm run build-spa && npm run generate && npm run replace-relative-paths && npm run cordova:clear && npm run cordova:copy",
+    "build-spa": "nuxt build --spa",
+    "replace-relative-paths2": "replace '/nuxtfiles/' 'nuxtfiles/' dist --recursive && replace '/assets/' 'nuxtfiles/' dist --recursive && replace '(href|src|\"href\"|\"src\")=\"/' '$1=\"../' dist --recursive && replace '(href|src|\"href\"|\"src\"):\"/' '$1:\"../' dist --recursive",
+    "copy-cordova": "cp -R dist/* cordova/www/",
+    "replace-relative-paths": "node ./scripts/replace-build-properties.js",
+    "cordova:copy": "cp -R dist/* cordova/www/",
+    "cordova:clear": "rm -f -R cordova/www/*",
+    "cordova:remove": "rm -f -R cordova/",
+    "cordova:create": "npm run cordova:remove && cordova telemetry off && cordova create cordova com.cabitas.ltd demoApp",
+    "cordova:remove:android": "npm run cordova:loads && cd cordova && cordova platform remove android && cd ..",
+    "cordova:remove:ios": "npm run cordova:loads && cd cordova && cordova platform remove ios && cd ..",
+    "cordova:add:android": "npm run cordova:loads && cd cordova && cordova platform add android && cd ..",
+    "cordova:add:ios": "npm run cordova:loads && cd cordova && cordova platform add ios && cd ..",
+    "cordova:run:android": "npm run cordova:loads && cd cordova && cordova run android && cd ..",
+    "cordova:run:ios": "npm run cordova:loads && cd cordova && cordova run ios && cd ..",
+    "cordova:sign:android": "npm run cordova:loads && [ -f android.keystore ] && mv ./android.keystore ./android.keystore.bkp && keytool -genkey -dname \"CN=Cabitaş, OU=Cabitaş Yazılım, O=Cabitaş Yazılım, L=İstanbul, S=unkown, C=TR\" -keystore android.keystore -alias android -validity 10000 -keysize 2048 -storepass 123456 -keypass 123456",
+    "cordova:release": "npm run cordova:loads && npm run cordova:sign:android && cd cordova && cordova build -release --buildConfig=../cordova-build.json && mv ./platforms/android/app/build/outputs/apk/release/app-release.apk ../android-release.apk && cd .. && echo \"\r\nAndroid release app: \"$PWD\"/android-release.apk\"",
+    "cordova:loads2": "source ~/.bash_profile",
+    "cordova:loads": "",
+    "cordova:release:full": "npm run cordova:create && npm run cordova:add:android && npm run cordova:build && npm run cordova:release"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.1",
+    "@nuxtjs/pwa": "^3.3.5",
+    "core-js": "^3.9.1",
+    "nuxt": "^2.15.3"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^6.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/tailwindcss": "^4.0.1",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.7.0",
+    "postcss": "^8.2.8",
+    "prettier": "^2.2.1",
+    "replace": "^1.2.1",
+    "replace-in-file": "^6.2.0"
+  }
+}
