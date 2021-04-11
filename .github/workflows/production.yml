@@ -19,6 +19,7 @@ jobs:
       - run: |
           sudo apt-get install libc6-dev-i386 lib32z1 -y
           sudo apt-get install openjdk-8-jdk -y
-          sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0_version/bin/java
+          sudo apt install software-properties-common -y
           which java
+          sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0_version/bin/java
           javac -v
