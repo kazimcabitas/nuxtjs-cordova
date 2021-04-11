@@ -17,9 +17,8 @@ jobs:
         with:
           node-version: '14.x'
       - run: |
-          sudo apt-get install libc6-dev-i386 lib32z1 -y
-          sudo apt-get install openjdk-8-jdk -y
-          sudo apt install software-properties-common -y
+          sudo apt install openjdk-8-jdk openjdk-8-jre -y
           which java
-          javac --version
-          echo $JAVA_HOME
+          java -version
+          echo "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> /etc/environment
+          java -version
