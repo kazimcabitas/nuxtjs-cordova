@@ -1279,16 +1279,16 @@
     webpack-node-externals "^2.5.2"
     webpackbar "^4.0.0"
 
-"@nuxtjs/axios@^5.13.1":
-  version "5.13.1"
-  resolved "https://registry.npmjs.org/@nuxtjs/axios/-/axios-5.13.1.tgz"
-  integrity sha512-vZpXV2AAkQ5Duejubt1k3ZgUnYowYnPvmcUt0hskd+OebmQ+jF6Wk6rOG0/9EeknOxm7mtTGgKSwdlE1jDo+xA==
+"@nuxtjs/axios@^5.13.3":
+  version "5.13.6"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/axios/-/axios-5.13.6.tgz#6f4bbd98a3a7799a5d2c0726c6ad2a98aa111881"
+  integrity sha512-XS+pOE0xsDODs1zAIbo95A0LKlilvJi8YW0NoXYuq3/jjxGgWDxizZ6Yx0AIIjZOoGsXJOPc0/BcnSEUQ2mFBA==
   dependencies:
     "@nuxtjs/proxy" "^2.1.0"
     axios "^0.21.1"
     axios-retry "^3.1.9"
     consola "^2.15.3"
-    defu "^3.2.2"
+    defu "^5.0.0"
 
 "@nuxtjs/eslint-config@^6.0.0":
   version "6.0.0"
@@ -3389,6 +3389,11 @@ defu@^3.2.2:
   version "3.2.2"
   resolved "https://registry.npmjs.org/defu/-/defu-3.2.2.tgz"
   integrity sha512-8UWj5lNv7HD+kB0e9w77Z7TdQlbUYDVWqITLHNqFIn6khrNHv5WQo38Dcm1f6HeNyZf0U7UbPf6WeZDSdCzGDQ==
+
+defu@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/defu/-/defu-5.0.0.tgz#5768f0d402a555bfc4c267246b20f82ce8b5a10b"
+  integrity sha512-VHg73EDeRXlu7oYWRmmrNp/nl7QkdXUxkQQKig0Zk8daNmm84AbGoC8Be6/VVLJEKxn12hR0UBmz8O+xQiAPKQ==
 
 delegates@^1.0.0:
   version "1.0.0"
@@ -7942,18 +7947,9 @@ repeat-string@^1.6.1:
   resolved "https://registry.npmjs.org/repeat-string/-/repeat-string-1.6.1.tgz"
   integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
 
-replace-in-file@^6.1.0:
+replace-in-file@^6.1.0, replace-in-file@^6.2.0:
   version "6.2.0"
   resolved "https://registry.npmjs.org/replace-in-file/-/replace-in-file-6.2.0.tgz"
-  integrity sha512-Im2AF9G/qgkYneOc9QwWwUS/efyyonTUBvzXS2VXuxPawE5yQIjT/e6x4CTijO0Quq48lfAujuo+S89RR2TP2Q==
-  dependencies:
-    chalk "^4.1.0"
-    glob "^7.1.6"
-    yargs "^16.2.0"
-
-replace-in-file@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/replace-in-file/-/replace-in-file-6.2.0.tgz#9c0e381b0e02f27f83d5ba500bb4046f63d18566"
   integrity sha512-Im2AF9G/qgkYneOc9QwWwUS/efyyonTUBvzXS2VXuxPawE5yQIjT/e6x4CTijO0Quq48lfAujuo+S89RR2TP2Q==
   dependencies:
     chalk "^4.1.0"
